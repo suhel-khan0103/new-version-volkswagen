@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student-built Volkswagen car marketplace and vehicle information demo.">
+  <title>Volkswagen Auto Hub | Buy, Sell & Track</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="volks.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Volkswagen Auto Hub home">
+        <span class="vw-mark" aria-hidden="true">VW</span>
+        <span>Volkswagen <b>Auto Hub</b></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#buy">Explore Cars</a>
+        <a href="#sell">Sell a Car</a>
+        <a href="#tracking">Track Order</a>
+        <a href="#about">About</a>
+      </div>
+      <label class="currency-wrap" for="currencySelect">
+        <span class="sr-only">Choose currency</span>
+        <select id="currencySelect">
+          <option value="INR">India · INR</option>
+          <option value="USD">USA · USD</option>
+          <option value="EUR">Germany · EUR</option>
+          <option value="GBP">UK · GBP</option>
+          <option value="JPY">Japan · JPY</option>
+        </select>
+      </label>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-shade"></div>
+      <div class="container hero-content">
+        <p class="eyebrow">A student web development project</p>
+        <h1>Find your next drive.</h1>
+        <p class="hero-copy">Explore sample Volkswagen listings, estimate a car's value and try a demo order tracker — all in one place.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#buy">Explore cars <span>→</span></a>
+          <a class="button button-outline" href="#tracking">Track a demo order</a>
+        </div>
+        <div class="hero-tags"><span>✓ Responsive design</span><span>✓ Currency selector</span><span>✓ Interactive demo</span></div>
+      </div>
+    </section>
+
+    <section class="section container" id="buy">
+      <div class="section-heading">
+        <div><p class="eyebrow">Discover the range</p><h2>Explore Volkswagen cars</h2><p class="muted">Illustrative sample listings — not live dealer inventory.</p></div>
+        <div class="search-box"><span aria-hidden="true">⌕</span><input id="carSearch" type="search" placeholder="Search model..." aria-label="Search cars"></div>
+      </div>
+      <div class="filter-row" id="filterRow">
+        <button class="filter-chip active" data-filter="All">All cars</button>
+        <button class="filter-chip" data-filter="SUV">SUV</button>
+        <button class="filter-chip" data-filter="Sedan">Sedan</button>
+        <button class="filter-chip" data-filter="Hatchback">Hatchback</button>
+        <button class="filter-chip" data-filter="Electric">Electric</button>
+      </div>
+      <div class="car-grid" id="carGrid" aria-live="polite"></div>
+    </section>
+
+    <section class="section section-soft" id="sell">
+      <div class="container split-layout">
+        <div class="section-intro">
+          <p class="eyebrow">Smart estimate</p><h2>Get an estimated car value</h2>
+          <p class="muted">Enter a few details to calculate a simple sample estimate. This is a rule-based demo, not a real AI valuation or an official offer.</p>
+          <div class="feature-note"><span class="feature-icon">✦</span><div><b>Transparent estimate</b><p>See how model, year, mileage and condition affect the sample result.</p></div></div>
+        </div>
+        <form class="panel form-panel" id="valuationForm">
+          <div class="field"><label for="model">Volkswagen model</label><select id="model" required><option value="">Select a model</option><option value="Virtus">Virtus</option><option value="Taigun">Taigun</option><option value="Tiguan">Tiguan</option><option value="Polo">Polo</option><option value="Golf">Golf</option><option value="ID.4">ID.4</option></select></div>
+          <div class="form-two">
+            <div class="field"><label for="year">Manufacturing year</label><input id="year" type="number" min="2005" max="2026" value="2022" required></div>
+            <div class="field"><label for="mileage">Mileage (km)</label><input id="mileage" type="number" min="0" max="1000000" value="35000" required></div>
+          </div>
+          <div class="field"><label for="condition">Vehicle condition</label><select id="condition"><option value="1.08">Excellent</option><option value="1" selected>Good</option><option value="0.82">Fair</option></select></div>
+          <button class="button button-dark full-width" type="submit">Calculate estimate <span>→</span></button>
+          <div class="result-box" id="valuationResult" hidden aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section container" id="tracking">
+      <div class="section-heading"><div><p class="eyebrow">Order updates</p><h2>Vehicle tracking demo</h2><p class="muted">Try one of the sample tracking IDs shown below.</p></div></div>
+      <div class="tracking-layout">
+        <form class="panel tracking-form" id="trackingForm">
+          <div class="field"><label for="trackingCode">VIN / demo tracking ID</label><input id="trackingCode" type="text" placeholder="e.g. VW-8829-X9" required></div>
+          <button class="button button-dark full-width" type="submit">Check status <span>→</span></button>
+          <p class="hint">Sample IDs: <button type="button" class="text-button sample-code" data-code="VW-8829-X9">VW-8829-X9</button> · <button type="button" class="text-button sample-code" data-code="VW-1042-DE">VW-1042-DE</button></p>
+        </form>
+        <div class="panel tracking-result" id="trackingResult" aria-live="polite">
+          <div class="empty-state"><span class="empty-icon">⌖</span><h3>Tracking details will appear here</h3><p>Enter a sample ID to view its demo journey.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="about">
+      <div class="container about-grid">
+        <div><p class="eyebrow">The company</p><h2>About Volkswagen</h2><p>Volkswagen was founded in Germany in 1937. The name Volkswagen means “people's car” in German. The company later became one of the world's major automobile manufacturers.</p><p class="about-small">This independent student project is for learning and demonstration. It is not an official Volkswagen website and is not affiliated with Volkswagen AG.</p></div>
+        <div class="about-facts">
+          <div><strong>1937</strong><span>Year founded</span></div>
+          <div><strong>Germany</strong><span>Country of origin</span></div>
+          <div><strong>Automotive</strong><span>Industry</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="currentYear"></span> Volkswagen Auto Hub Demo</span>
+      <span>Designed & developed by <b class="developer-name">Your Name</b> · Project created: 9 November 2026</span>
+    </div>
+  </footer>
+
+  <aside class="fixed-vw" aria-label="Volkswagen mark">
+    <span class="vw-mark small-mark">VW</span><span>Volkswagen</span>
+  </aside>
+  <aside class="fixed-profile" aria-label="Developer profile photo">
+    <img src="suhel.jpeg" alt="Developer profile photo" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <span class="profile-fallback">Add<br>photo</span>
+  </aside>
+
+  <button class="chat-launcher" id="chatLauncher" aria-label="Open help assistant">✦</button>
+  <section class="chat-panel" id="chatPanel" aria-label="Demo help assistant" hidden>
+    <div class="chat-top"><div><b>Auto Hub Assistant</b><small>Demo help · instant replies</small></div><button id="chatClose" aria-label="Close assistant">×</button></div>
+    <div class="chat-messages" id="chatMessages"><p class="bot-message">Hello! Ask me about sample cars, valuation or tracking.</p></div>
+    <form class="chat-compose" id="chatForm"><input id="chatInput" placeholder="Type your question..." aria-label="Message" required><button aria-label="Send message">➤</button></form>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
