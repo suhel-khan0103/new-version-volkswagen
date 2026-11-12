@@ -8,10 +8,75 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="stylee.css">
   <link rel="stylesheet" href="style.css">
-  <script src="volks.js" defer></script>
+  <!-- connected to script -->
+
+ <script src="volks.js" defer></script>
+  <script src="work.js" defer></script>
+
 </head>
 <body>
+
+  <!-- LOGIN / SIGNUP PAGE -->
+<section class="auth-screen" id="authScreen">
+  <div class="auth-card">
+    <div class="auth-logo">VW</div>
+
+    <p class="eyebrow">WELCOME TO AUTO HUB</p>
+    <h1 id="authTitle">Login to your account</h1>
+    <p class="auth-subtitle">Explore Volkswagen cars and manage your account.</p>
+
+    <form id="authForm">
+      <div class="auth-field" id="nameField" hidden>
+        <label for="authName">Full Name</label>
+        <input type="text" id="authName" placeholder="Enter your name">
+      </div>
+
+      <div class="auth-field">
+        <label for="authEmail">Email Address</label>
+        <input type="email" id="authEmail" placeholder="Enter your email" required>
+      </div>
+
+      <div class="auth-field">
+        <label for="authPassword">Password</label>
+        <input type="password" id="authPassword" placeholder="Enter password" minlength="6" required>
+      </div>
+
+      <label class="auth-consent">
+        <input type="checkbox" id="authConsent" required>
+        <span>I agree to use this website's demo account system.</span>
+      </label>
+
+      <button type="submit" class="auth-submit" id="authSubmit">
+        Login →
+      </button>
+    </form>
+
+    <p class="auth-switch">
+      <span id="authSwitchText">Don't have an account?</span>
+      <button type="button" id="authSwitch">Sign Up</button>
+    </p>
+
+    <p class="auth-demo-note">
+      Student project demo. Do not enter a real password.
+    </p>
+  </div>
+</section>
+
+<!-- thi logout user -->
+
+<div class="nav-links" id="navLinks"></div>
+<span id="loggedUser" class="logged-user"></span>
+
+<button type="button" id="logoutBtn" class="logout-btn">
+  Logout
+</button>
+
+
+<!-- old code -->
+
+
   <header class="site-header">
     <nav class="nav container" aria-label="Main navigation">
       <a class="brand" href="#home" aria-label="Volkswagen Auto Hub home">
@@ -136,5 +201,7 @@
     <form class="chat-compose" id="chatForm"><input id="chatInput" placeholder="Type your question..." aria-label="Message" required><button aria-label="Send message">➤</button></form>
   </section>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- new script -->
+ 
 </body>
 </html>
